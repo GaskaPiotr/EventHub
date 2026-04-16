@@ -1,4 +1,10 @@
 package com.github.gaskapiotr.eventhub.ticketing;
 
-public record TicketDTO() {
-}
+import java.time.LocalDateTime;
+
+public record TicketDTO(
+        Long id,
+        Long workshopId,
+        String attendeeEmail,
+        LocalDateTime purchaseDate
+) {}
