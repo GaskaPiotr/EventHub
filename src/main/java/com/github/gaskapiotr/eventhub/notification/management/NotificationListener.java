@@ -8,10 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 class NotificationListener {
-    private final NotificationListener notificationListener;
+    private final NotificationManagement notificationManagement;
 
     @ApplicationModuleListener
     void on(TicketPurchasedEvent event) {
-        // TODO
+        notificationManagement.sendTicketConfirmation(
+                event.attendeeEmail(),
+                event.workshopTitle(),
+                event.ticketId()
+        );
     }
 }
