@@ -51,7 +51,7 @@ The application is strictly divided into 5 modules:
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/GaskaPiotr/EventHub.git](https://github.com/GaskaPiotr/EventHub.git)
+git clone https://github.com/GaskaPiotr/EventHub.git
 cd EventHub
 ```
 
