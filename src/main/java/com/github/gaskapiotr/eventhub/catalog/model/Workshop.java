@@ -3,6 +3,7 @@ package com.github.gaskapiotr.eventhub.catalog.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,4 +23,5 @@ public class Workshop {
     private LocalDateTime date;
     private int maxCapacity;
     private int currentAttendees;
+    private BigDecimal price;
 }
