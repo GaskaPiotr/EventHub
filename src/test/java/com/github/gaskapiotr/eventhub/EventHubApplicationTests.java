@@ -1,4 +1,4 @@
-package com.github.GaskaPiotr.EventHub;
+package com.github.gaskapiotr.eventhub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

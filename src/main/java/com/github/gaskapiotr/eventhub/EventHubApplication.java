@@ -1,4 +1,4 @@
-package com.github.GaskaPiotr.EventHub;
+package com.github.gaskapiotr.eventhub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
