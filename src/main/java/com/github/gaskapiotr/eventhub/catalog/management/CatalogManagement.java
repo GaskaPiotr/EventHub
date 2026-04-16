@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CatalogManagement implements CatalogExternalAPI, CatalogInternalAPI {
-
     private final WorkshopRepository repository;
     private final WorkshopMapper mapper;
 
@@ -31,7 +30,6 @@ public class CatalogManagement implements CatalogExternalAPI, CatalogInternalAPI
     @Transactional
     public WorkshopDTO createWorkshop(WorkshopDTO dto) {
         Workshop entity = setupNewWorkshop(dto);
-
         Workshop savedEntity = repository.save(entity);
         return mapper.toDto(savedEntity);
     }
