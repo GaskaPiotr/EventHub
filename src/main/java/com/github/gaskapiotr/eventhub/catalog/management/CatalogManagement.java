@@ -8,10 +8,12 @@ import com.github.gaskapiotr.eventhub.catalog.mapper.WorkshopMapper;
 import com.github.gaskapiotr.eventhub.catalog.model.Workshop;
 import com.github.gaskapiotr.eventhub.catalog.repository.WorkshopRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.jdbc.Work;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +47,35 @@ public class CatalogManagement implements CatalogExternalAPI, CatalogInternalAPI
     @Override
     @Transactional
     public ReservationResult reserveSeat(Long workshopId) {
-        // TODO
+        return findWorkshopById(workshopId)
+                .map(this::processReservation)
+                .orElse(ReservationResult.NOT_FOUND);
+    }
+
+    private Optional<Workshop> findWorkshopById(Long workshopId) {
+        return repository.findById(workshopId);
+    }
+
+    private ReservationResult processReservation(Workshop workshop) {
+        if (isSoldOut(workshop)) {
+            return ReservationResult.SOLD_OUT;
+        }
+        incrementByOneCurrentAttendees(workshop);
+        return saveWorkshopAndReturnSuccess(workshop);
+    }
+
+    private boolean isSoldOut(Workshop workshop) {
+        return workshop.getCurrentAttendees() >= workshop.getMaxCapacity();
+    }
+
+
+    private void incrementByOneCurrentAttendees(Workshop workshop) {
+        workshop.setCurrentAttendees(workshop.getCurrentAttendees() + 1);
+    }
+
+    private ReservationResult saveWorkshopAndReturnSuccess(Workshop workshop) {
+        repository.save(workshop);
+        return ReservationResult.SUCCESS;
     }
 
 }
