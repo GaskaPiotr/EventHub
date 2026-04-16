@@ -21,7 +21,9 @@ public class CatalogManagement implements CatalogExternalAPI, CatalogInternalAPI
 
     @Override
     public List<WorkshopDTO> getAllWorkshops() {
-        // TODO
+        return repository.findAll().stream()
+                .map(mapper::toDto)
+                .toList();
     }
 
     @Override
