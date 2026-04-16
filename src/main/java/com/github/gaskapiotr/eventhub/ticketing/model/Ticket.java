@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,4 +25,6 @@ public class Ticket {
 
     private String attendeeEmail;
     private LocalDateTime purchaseDate;
+
+    private BigDecimal price;
 }
