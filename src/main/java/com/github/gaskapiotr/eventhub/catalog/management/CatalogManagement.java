@@ -5,7 +5,6 @@ import com.github.gaskapiotr.eventhub.catalog.mapper.WorkshopMapper;
 import com.github.gaskapiotr.eventhub.catalog.model.Workshop;
 import com.github.gaskapiotr.eventhub.catalog.repository.WorkshopRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.jdbc.Work;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
