@@ -23,6 +23,7 @@ Instead of a traditional layered monolith or a premature microservices architect
 ## Module Structure & C4 Architecture
 
 ![EventHub Architecture](docs/architecture.png)
+
 *(Auto-generated via Spring Modulith Documenter & PlantUML)*
 
 The application is strictly divided into 5 modules:
@@ -52,3 +53,23 @@ The application is strictly divided into 5 modules:
 ```bash
 git clone [https://github.com/GaskaPiotr/EventHub.git](https://github.com/GaskaPiotr/EventHub.git)
 cd EventHub
+```
+
+**2. Run the application using Maven**
+```bash
+./mvnw spring-boot:run
+```
+
+**3. Access the Swagger UI**
+Once the application is running on port 8080, navigate to the interactive API documentation to test the endpoints:
+ **http://localhost:8080/swagger-ui.html**
+
+---
+
+## Running the Architectural Tests
+
+To prove the modular boundaries are intact, run the Modulith verification tests:
+```bash
+./mvnw test
+```
+*If a developer accidentally imports a `ticketing` repository into the `catalog` module, this test will fail the build.*
