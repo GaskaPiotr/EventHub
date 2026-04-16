@@ -5,6 +5,7 @@ import com.github.gaskapiotr.eventhub.catalog.CatalogInternalAPI;
 import com.github.gaskapiotr.eventhub.catalog.ReservationResult;
 import com.github.gaskapiotr.eventhub.catalog.WorkshopDTO;
 import com.github.gaskapiotr.eventhub.catalog.mapper.WorkshopMapper;
+import com.github.gaskapiotr.eventhub.catalog.model.Workshop;
 import com.github.gaskapiotr.eventhub.catalog.repository.WorkshopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,16 @@ public class CatalogManagement implements CatalogExternalAPI, CatalogInternalAPI
     @Override
     @Transactional
     public WorkshopDTO createWorkshop(WorkshopDTO dto) {
-        // TODO
+        Workshop entity = setupNewWorkshop(dto);
+
+        Workshop savedEntity = repository.save(entity);
+        return mapper.toDto(savedEntity);
+    }
+
+    private Workshop setupNewWorkshop(WorkshopDTO dto) {
+        Workshop entity = mapper.toEntity(dto);
+        entity.setCurrentAttendees(0);
+        return entity;
     }
 
     @Override
