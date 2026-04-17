@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: eventhub-postgres
+    environment:
+      # TODO change username and password for env variables
+      POSTGRES_USER: exampleuser
+      POSTGRES_PASSWORD: examplepassword
+      POSTGRES_DB: eventhub_db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
