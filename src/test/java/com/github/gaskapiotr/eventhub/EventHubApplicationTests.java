@@ -6,7 +6,7 @@ import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
 
 @SpringBootTest
-class EventHubApplicationTests {
+class EventHubApplicationTests extends AbstractIntegrationTest {
 	ApplicationModules applicationModules = ApplicationModules.of(EventHubApplication.class);
 
 	@Test

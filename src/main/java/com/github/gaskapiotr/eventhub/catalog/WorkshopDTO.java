@@ -1,5 +1,6 @@
 package com.github.gaskapiotr.eventhub.catalog;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public record WorkshopDTO(
@@ -8,5 +9,6 @@ public record WorkshopDTO(
         String description,
         LocalDateTime date,
         int maxCapacity,
-        int currentAttendees
+        int currentAttendees,
+        BigDecimal price
 ) {}
