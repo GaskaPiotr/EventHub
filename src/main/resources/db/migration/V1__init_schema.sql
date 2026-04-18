@@ -13,7 +13,5 @@ CREATE TABLE ticket (
     workshop_id BIGINT NOT NULL,
     attendee_email VARCHAR(255) NOT NULL,
     purchase_date TIMESTAMP NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-
-    CONSTRAINT fk_ticket_workshop FOREIGN KEY (workshop_id) REFERENCES workshop(id)
+    price DECIMAL(10, 2) NOT NULL
 );
